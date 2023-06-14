@@ -1,17 +1,17 @@
-import init
+import variable
 
 
 def save_position(str1, str2):
-    init.track.append([])
-    i = len(init.track) - 1
+    variable.track.append([])
+    i = len(variable.track) - 1
     if (i % 2) == 0:  # player1
-        init.chessboard[int(str1)][int(str2)] = 1
-        init.track[i].append(str1)
-        init.track[i].append(str2)
+        variable.chessboard[int(str1)][int(str2)] = 1
+        variable.track[i].append(str1)
+        variable.track[i].append(str2)
     elif (i % 2) == 1:  # player2
-        init.chessboard[int(str1)][int(str2)] = 2
-        init.track[i].append(str1)
-        init.track[i].append(str2)
+        variable.chessboard[int(str1)][int(str2)] = 2
+        variable.track[i].append(str1)
+        variable.track[i].append(str2)
 
 
 def checkinput(list1: list):
@@ -69,7 +69,7 @@ def checkinput(list1: list):
         else:
             str1 = strA
             str2 = strB
-    if init.chessboard[int(str1)][int(str2)] != 0:
+    if variable.chessboard[int(str1)][int(str2)] != 0:
         print("This place already has a chess!")
         return False, False, False
     else:
