@@ -164,11 +164,4 @@ def checkwin (list,point):
 
 
 
-##if __name__ == "__main__":
-    interactive.init()
-    list1 = variable.chessboard
-    #checkwin(list1,list2)
-    #print (list1)
-    print(list1)
-    print(list1)
-    #print(interactive.show(list1))
+
