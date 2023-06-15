@@ -1,10 +1,10 @@
 import checkwin
 import interactive
-# import review
+import review
 import dodobird
 import variable
 import os
-
+import screen_change
 
 if __name__ == "__main__":
     os.system("clear")
@@ -43,8 +43,8 @@ if __name__ == "__main__":
         interactive.show_input_back(num1,num2,3)
         interactive.print_line(winner, direction, pos)
         os.system("sleep 5")
-        # if interactive.print_review() == 1:
-        #     review.review()
+        if interactive.print_review() == 1:
+            review.review(variable.track)
         if interactive.print_replay() == 1:
             interactive.init()
             interactive.show_table()

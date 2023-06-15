@@ -92,6 +92,7 @@ def init():
     variable.chessboard = [[0 for i in range(0, 11)] for j in range(0, 11)]
     variable.track = []
     variable.count=0
+    variable.length=0
     show_table()
 
 
@@ -1110,12 +1111,12 @@ def print_review(): #True=>review  False=>go to replay
 
 def print_replay(): #True=>replay  False=>end game
     print("\x1bc") #畫面清空
-    screen_change.screen_back()
+    key=0
     while True:
-        ans=input("\x1b[0;0HDO YOU WNT TO REPLAY?(Y/N):\n")
-        if ans == "Y" or ans == "y":
+        key=input("\x1b[0;0HDO YOU WNT TO REPLAY?(Y/N):\n")
+        if key == "Y" or key == "y":
             return True
-        elif ans == "N" or ans == "n":
+        elif key == "N" or key == "n":
             return False
         else:
             print("\x1bc") #畫面清空
