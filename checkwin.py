@@ -17,9 +17,12 @@ def checkwin (point):
 
     # 右
     for i in range(1,5):
-        x = x + 1
-        if variable.chessboard[y][x] == player and x <= 11:
-            times += 1
+        if x <=9:
+            x = x + 1
+            if variable.chessboard[y][x] == player and x <= 11:
+                times += 1
+            else:
+                break
         else:
             break
 
@@ -63,11 +66,14 @@ def checkwin (point):
 
     # 下
     for i in range(1,5):
-        y = y + 1
-        if variable.chessboard[y][x] == player and y <= 11:
-            times += 1
-            center[0] = y        #!!讓center保持在最下邊
-            center[1] = x
+        if y <=9:
+            y = y + 1
+            if variable.chessboard[y][x] == player and y <= 11:
+                times += 1
+                center[0] = y        #!!讓center保持在最下邊
+                center[1] = x
+            else:
+                break
         else:
             break
 
@@ -85,10 +91,13 @@ def checkwin (point):
     
     #右上
     for i in range(1,5):
-        x = x + 1
-        y = y - 1
-        if variable.chessboard[y][x] == player and x <= 11 and y >= 0:
-            times += 1
+        if x <=9:
+            x = x + 1
+            y = y - 1
+            if variable.chessboard[y][x] == player and x <= 11 and y >= 0:
+                times += 1
+            else:
+                break
         else:
             break
 
@@ -98,12 +107,15 @@ def checkwin (point):
 
     #左下
     for i in range(1,5):
-        x = x - 1
-        y = y + 1
-        if variable.chessboard[y][x] == player and x >= 0 and y <= 11:
-            times += 1
-            center[0] = y       #!!讓center保持在最左下邊
-            center[1] = x
+        if y <=9:
+            x = x - 1
+            y = y + 1
+            if variable.chessboard[y][x] == player and x >= 0 and y <= 11:
+                times += 1
+                center[0] = y       #!!讓center保持在最左下邊
+                center[1] = x
+            else:
+                break
         else:
             break
 
@@ -122,10 +134,13 @@ def checkwin (point):
     
     #右下
     for i in range(1,5):
-        x = x + 1
-        y = y + 1
-        if variable.chessboard[y][x] == player and x <= 11 and y <= 11:
-            times += 1
+        if x <=9 and y<=9:
+            x = x + 1
+            y = y + 1
+            if variable.chessboard[y][x] == player and x <= 11 and y <= 11:
+                times += 1
+            else:
+                break
         else:
             break
 

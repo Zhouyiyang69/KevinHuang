@@ -48,8 +48,8 @@ type1_row_dirt = {
     9: 411,
     10: 455,
 }
-type1_col_dirt = {3: 44, 4: 62, 5: 80, 6: 98, 7: 116, 8: 134, 9: 152}
-type2_row_dirt = {3: 104, 4: 149, 5: 193, 6: 237, 7: 281, 8: 325, 9: 369}
+type1_col_dirt = {2: 44, 3: 62, 4: 80, 5: 98, 6: 116, 7: 134, 8: 152}
+type2_row_dirt = {2: 104, 3: 149, 4: 193, 5: 237, 6: 281, 7: 325, 8: 369}
 type2_col_dirt = {
     0: 7,
     1: 25,
@@ -64,22 +64,22 @@ type2_col_dirt = {
     10: 187,
 }
 type3_row_dirt = {
-    3: 44,
-    4: 62,
-    5: 80,
-    6: 98,
-    7: 116,
-    8: 134,
-    9: 152,
+    2: 44,
+    3: 62,
+    4: 80,
+    5: 98,
+    6: 116,
+    7: 134,
+    8: 152,
 }
 type3_col_dirt = {
-    3: 102,
-    4: 147,
-    5: 191,
-    6: 235,
-    7: 279,
-    8: 323,
-    9: 367,
+    2: 102,
+    3: 147,
+    4: 191,
+    5: 235,
+    6: 279,
+    7: 323,
+    8: 367,
 }
 num_address = {1: 610, 2: 640, 3: 670, 4: 700, 5: 730}
 
@@ -141,16 +141,6 @@ def show_table():
     print(outside_row)
 
 
-def show_player():
-    if (variable.count % 2) == 0:
-        print_player1()
-        variable.count + 1
-
-    elif (variable.count % 2) == 1:
-        print_player2()
-        variable.count + 1
-
-
 def print_piece_red(type,row, col):
     color="\x1b[40;31m"
     if type==1:
@@ -191,40 +181,47 @@ def print_piece_blue(type,row, col):
     print_at_position(color+"■■■■■■■■■■■■■■\x1b[0m", row + 11, col + 8)
 
 
-def print_player2():
-    print_at_position("\x1b[44;34m                  ■■■■■■\x1b[0m", 2, 502)
+def print_player2(type):
+    color="\x1b[44;34m"
+    if type==1:
+        color="\x1b[8m"
+    print_at_position(color+"                        \x1b[0m", 2, 502)
     for i in range(3, 20):
-        print_at_position("\x1b[44;34m   \x1b[0m", i, 500)
+        print_at_position(color+"   \x1b[0m", i, 500)
     for i in range(3, 10):
-        print_at_position("\x1b[44;34m   \x1b[0m", i, 525)
-    print_at_position("\x1b[44;34m                    ■■■■■■\x1b[0m", 10, 500)
+        print_at_position(color+"   \x1b[0m", i, 525)
+    print_at_position(color+"                          \x1b[0m", 10, 500)
     for i in range(540,561):
-        print_at_position("\x1b[44;34m   \x1b[0m", 2, i)
-        print_at_position("\x1b[44;34m   \x1b[0m", 10, i)
-        print_at_position("\x1b[44;34m   \x1b[0m", 19, i)
+        print_at_position(color+"   \x1b[0m", 2, i)
+        print_at_position(color+"   \x1b[0m", 10, i)
+        print_at_position(color+"   \x1b[0m", 19, i)
     for i in range(2, 10):
-        print_at_position("\x1b[44;34m   \x1b[0m", i, 560)
+        print_at_position(color+"   \x1b[0m", i, 560)
     for i in range(10,20):    
-        print_at_position("\x1b[44;34m   \x1b[0m", i, 540)
+        print_at_position(color+"   \x1b[0m", i, 540)
     for i in range(5, 8):
-        print_at_position("\x1b[44;34m■■■■■■\x1b[0m", i, 570)
+        print_at_position(color+"      \x1b[0m", i, 570)
     for i in range(14, 17):
-        print_at_position("\x1b[44;34m■■■■■■\x1b[0m", i, 570)
+        print_at_position(color+"      \x1b[0m", i, 570)
 
 
-def print_player1():
-    print_at_position("\x1b[41;31m                  ■■■■■■\x1b[0m", 2, 502)
+def print_player1(type):
+    color="\x1b[41;31m"
+    if type==1:
+        color="\x1b[8m"
+        
+    print_at_position(color+"                        \x1b[0m", 2, 502)
     for i in range(3, 20):
-        print_at_position("\x1b[41;31m   \x1b[0m", i, 500)
+        print_at_position(color+"   \x1b[0m", i, 500)
     for i in range(3, 10):
-        print_at_position("\x1b[41;31m   \x1b[0m", i, 525)
-    print_at_position("\x1b[41;31m                    ■■■■■■\x1b[0m", 10, 500)
+        print_at_position(color+"   \x1b[0m", i, 525)
+    print_at_position(color+"                          \x1b[0m", 10, 500)
     for i in range(2, 20):
-        print_at_position("\x1b[41;31m   \x1b[0m", i, 550)
+        print_at_position(color+"   \x1b[0m", i, 550)
     for i in range(5, 8):
-        print_at_position("\x1b[41;31m■■■■■■\x1b[0m", i, 570)
+        print_at_position(color+"      \x1b[0m", i, 570)
     for i in range(14, 17):
-        print_at_position("\x1b[41;31m■■■■■■\x1b[0m", i, 570)
+        print_at_position(color+"      \x1b[0m", i, 570)
 
 
 def print_winner(winner):
@@ -245,12 +242,12 @@ def print_winner(winner):
         for i in range(10,20):    
             print_at_position(color+"   \x1b[0m", i, 540)   
 
-    print_at_position(color+"                  ■■■■■■\x1b[0m", 2, 502)
+    print_at_position(color+"                        \x1b[0m", 2, 502)
     for i in range(3, 20):
         print_at_position(color+"   \x1b[0m", i, 500)
     for i in range(3, 10):
         print_at_position(color+"   \x1b[0m", i, 525)
-    print_at_position(color+"                    ■■■■■■\x1b[0m", 10, 500)
+    print_at_position(color+"                          \x1b[0m", 10, 500)
     
         
     positions = [
@@ -327,394 +324,394 @@ def print_winner(winner):
 def print_line(winner, type, position):
     print_winner(winner)
     if type == 1:
-        position[0] = type1_row_dirt[position[0]]
-        position[1] = type1_col_dirt[position[1]]
-        for i in range(position[1] - 38, position[1] + 38):
-            print_at_position("\x1b[05;40;33m■■■■\x1b[0m", i, position[0])
+        position[1] = type1_row_dirt[position[1]]
+        position[0] = type1_col_dirt[position[0]]
+        for i in range(position[0] - 38, position[0] + 38):
+            print_at_position("\x1b[05;40;33m■■■■\x1b[0m", i, position[1])
     if type == 2:
-        position[0] = type2_row_dirt[position[0]]
-        position[1] = type2_col_dirt[position[1]]
-        for i in range(position[0] - 92, position[0] + 92):
-            print_at_position("\x1b[43;33m■\x1b[0m", position[1], i)
+        position[1] = type2_row_dirt[position[1]]
+        position[0] = type2_col_dirt[position[0]]
+        for i in range(position[1] - 92, position[1] + 92):
+            print_at_position("\x1b[05;40;33m■\x1b[0m", position[0], i)
     if type == 3:
         position[0] = type3_row_dirt[position[0]]
         position[1] = type3_col_dirt[position[1]]
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 37, position[1] - 92
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 37, position[1] - 92
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 36, position[1] - 90
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 36, position[1] - 90
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 35, position[1] - 87
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 35, position[1] - 87
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 34, position[1] - 85
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 34, position[1] - 85
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 33, position[1] - 82
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 33, position[1] - 82
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 32, position[1] - 80
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 32, position[1] - 80
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 31, position[1] - 77
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 31, position[1] - 77
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 30, position[1] - 75
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 30, position[1] - 75
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 29, position[1] - 72
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 29, position[1] - 72
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 28, position[1] - 70
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 28, position[1] - 70
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 27, position[1] - 67
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 27, position[1] - 67
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 26, position[1] - 65
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 26, position[1] - 65
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 25, position[1] - 62
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 25, position[1] - 62
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 24, position[1] - 60
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 24, position[1] - 60
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 23, position[1] - 57
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 23, position[1] - 57
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 22, position[1] - 55
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 22, position[1] - 55
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 21, position[1] - 52
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 21, position[1] - 52
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 20, position[1] - 50
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 20, position[1] - 50
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 19, position[1] - 47
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 19, position[1] - 47
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 18, position[1] - 45
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 18, position[1] - 45
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 17, position[1] - 42
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 17, position[1] - 42
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 16, position[1] - 40
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 16, position[1] - 40
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 15, position[1] - 37
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 15, position[1] - 37
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 14, position[1] - 35
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 14, position[1] - 35
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 13, position[1] - 32
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 13, position[1] - 32
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 12, position[1] - 30
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 12, position[1] - 30
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 11, position[1] - 27
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 11, position[1] - 27
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 10, position[1] - 25
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 10, position[1] - 25
         )
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 9, position[1] - 22)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 8, position[1] - 20)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 7, position[1] - 17)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 6, position[1] - 15)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 5, position[1] - 12)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 4, position[1] - 10)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 3, position[1] - 7)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 2, position[1] - 5)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 1, position[1] - 2)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0], position[1])
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 1, position[1] + 3)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 2, position[1] + 5)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 3, position[1] + 8)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 4, position[1] + 10)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 5, position[1] + 13)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 6, position[1] + 15)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 7, position[1] + 18)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 8, position[1] + 20)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 9, position[1] + 23)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 9, position[1] - 22)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 8, position[1] - 20)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 7, position[1] - 17)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 6, position[1] - 15)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 5, position[1] - 12)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 4, position[1] - 10)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 3, position[1] - 7)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 2, position[1] - 5)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 1, position[1] - 2)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0], position[1])
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 1, position[1] + 3)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 2, position[1] + 5)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 3, position[1] + 8)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 4, position[1] + 10)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 5, position[1] + 13)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 6, position[1] + 15)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 7, position[1] + 18)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 8, position[1] + 20)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 9, position[1] + 23)
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 10, position[1] + 25
-        )
-        print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 11, position[1] + 28
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 10, position[1] + 25
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 12, position[1] + 30
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 11, position[1] + 28
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 13, position[1] + 33
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 12, position[1] + 30
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 14, position[1] + 35
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 13, position[1] + 33
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 15, position[1] + 38
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 14, position[1] + 35
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 16, position[1] + 40
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 15, position[1] + 38
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 17, position[1] + 43
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 16, position[1] + 40
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 18, position[1] + 45
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 17, position[1] + 43
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 19, position[1] + 48
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 18, position[1] + 45
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 20, position[1] + 50
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 19, position[1] + 48
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 21, position[1] + 53
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 20, position[1] + 50
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 22, position[1] + 55
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 21, position[1] + 53
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 23, position[1] + 58
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 22, position[1] + 55
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 24, position[1] + 60
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 23, position[1] + 58
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 25, position[1] + 63
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 24, position[1] + 60
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 26, position[1] + 65
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 25, position[1] + 63
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 27, position[1] + 68
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 26, position[1] + 65
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 28, position[1] + 70
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 27, position[1] + 68
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 29, position[1] + 73
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 28, position[1] + 70
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 30, position[1] + 75
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 29, position[1] + 73
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 31, position[1] + 78
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 30, position[1] + 75
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 32, position[1] + 80
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 31, position[1] + 78
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 33, position[1] + 83
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 32, position[1] + 80
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 34, position[1] + 85
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 33, position[1] + 83
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 35, position[1] + 88
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 34, position[1] + 85
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 36, position[1] + 90
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 35, position[1] + 88
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 37, position[1] + 93
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 36, position[1] + 90
+        )
+        print_at_position(
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 37, position[1] + 93
         )
     if type == 4:
         position[0] = type3_row_dirt[position[0]]
         position[1] = type3_col_dirt[position[1]]
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 37, position[1] - 92
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 37, position[1] - 92
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 36, position[1] - 90
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 36, position[1] - 90
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 35, position[1] - 87
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 35, position[1] - 87
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 34, position[1] - 85
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 34, position[1] - 85
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 33, position[1] - 82
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 33, position[1] - 82
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 32, position[1] - 80
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 32, position[1] - 80
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 31, position[1] - 77
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 31, position[1] - 77
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 30, position[1] - 75
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 30, position[1] - 75
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 29, position[1] - 72
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 29, position[1] - 72
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 28, position[1] - 70
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 28, position[1] - 70
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 27, position[1] - 67
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 27, position[1] - 67
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 26, position[1] - 65
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 26, position[1] - 65
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 25, position[1] - 62
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 25, position[1] - 62
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 24, position[1] - 60
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 24, position[1] - 60
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 23, position[1] - 57
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 23, position[1] - 57
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 22, position[1] - 55
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 22, position[1] - 55
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 21, position[1] - 52
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 21, position[1] - 52
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 20, position[1] - 50
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 20, position[1] - 50
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 19, position[1] - 47
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 19, position[1] - 47
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 18, position[1] - 45
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 18, position[1] - 45
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 17, position[1] - 42
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 17, position[1] - 42
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 16, position[1] - 40
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 16, position[1] - 40
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 15, position[1] - 37
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 15, position[1] - 37
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 14, position[1] - 35
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 14, position[1] - 35
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 13, position[1] - 32
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 13, position[1] - 32
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 12, position[1] - 30
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 12, position[1] - 30
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 11, position[1] - 27
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 11, position[1] - 27
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] + 10, position[1] - 25
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 10, position[1] - 25
         )
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 9, position[1] - 22)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 8, position[1] - 20)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 7, position[1] - 17)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 6, position[1] - 15)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 5, position[1] - 12)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 4, position[1] - 10)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 3, position[1] - 7)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 2, position[1] - 5)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] + 1, position[1] - 2)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0], position[1])
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 1, position[1] + 3)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 2, position[1] + 5)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 3, position[1] + 8)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 4, position[1] + 10)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 5, position[1] + 13)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 6, position[1] + 15)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 7, position[1] + 18)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 8, position[1] + 20)
-        print_at_position("\x1b[43;33m■■■■■■\x1b[0m", position[0] - 9, position[1] + 23)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 9, position[1] - 22)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 8, position[1] - 20)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 7, position[1] - 17)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 6, position[1] - 15)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 5, position[1] - 12)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 4, position[1] - 10)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 3, position[1] - 7)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 2, position[1] - 5)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] + 1, position[1] - 2)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0], position[1])
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 1, position[1] + 3)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 2, position[1] + 5)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 3, position[1] + 8)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 4, position[1] + 10)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 5, position[1] + 13)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 6, position[1] + 15)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 7, position[1] + 18)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 8, position[1] + 20)
+        print_at_position("\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 9, position[1] + 23)
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 10, position[1] + 25
-        )
-        print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 11, position[1] + 28
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 10, position[1] + 25
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 12, position[1] + 30
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 11, position[1] + 28
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 13, position[1] + 33
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 12, position[1] + 30
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 14, position[1] + 35
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 13, position[1] + 33
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 15, position[1] + 38
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 14, position[1] + 35
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 16, position[1] + 40
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 15, position[1] + 38
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 17, position[1] + 43
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 16, position[1] + 40
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 18, position[1] + 45
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 17, position[1] + 43
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 19, position[1] + 48
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 18, position[1] + 45
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 20, position[1] + 50
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 19, position[1] + 48
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 21, position[1] + 53
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 20, position[1] + 50
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 22, position[1] + 55
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 21, position[1] + 53
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 23, position[1] + 58
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 22, position[1] + 55
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 24, position[1] + 60
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 23, position[1] + 58
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 25, position[1] + 63
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 24, position[1] + 60
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 26, position[1] + 65
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 25, position[1] + 63
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 27, position[1] + 68
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 26, position[1] + 65
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 28, position[1] + 70
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 27, position[1] + 68
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 29, position[1] + 73
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 28, position[1] + 70
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 30, position[1] + 75
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 29, position[1] + 73
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 31, position[1] + 78
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 30, position[1] + 75
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 32, position[1] + 80
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 31, position[1] + 78
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 33, position[1] + 83
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 32, position[1] + 80
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 34, position[1] + 85
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 33, position[1] + 83
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 35, position[1] + 88
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 34, position[1] + 85
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 36, position[1] + 90
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 35, position[1] + 88
         )
         print_at_position(
-            "\x1b[43;33m■■■■■■\x1b[0m", position[0] - 37, position[1] + 93
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 36, position[1] + 90
+        )
+        print_at_position(
+            "\x1b[05;40;33m■■■■■■\x1b[0m", position[0] - 37, position[1] + 93
         )
 
 def print_1(type,add):
@@ -891,8 +888,124 @@ def print_dit(type,add):
         print_at_position(color+"  \x1b[0m", i, add+3)
 
 def show_input(player):
-    num1=getpass.getpass(prompt="", stream=None)
-    if int(num1)==1:
+    if player==1:
+        print_player2(1)
+        print_player1(0)
+    if player==2:
+        print_player1(1)
+        print_player2(0)
+    while True:
+        num1=getpass.getpass(prompt="", stream=None)
+        if num1=="":
+            continue
+        elif int(num1)>10 or int(num1)<0:
+            continue
+        elif int(num1)==0:
+            print_0(player,1)
+            print_dit(player,2)
+        elif int(num1)==1:
+            print_1(player,1)
+            print_dit(player,2)
+        elif int(num1)==2:
+            print_2(player,1)
+            print_dit(player,2)
+        elif int(num1)==3:
+            print_3(player,1)
+            print_dit(player,2)
+        elif int(num1)==4:
+            print_4(player,1)
+            print_dit(player,2)
+        elif int(num1)==5:
+            print_5(player,1)
+            print_dit(player,2)
+        elif int(num1)==6:
+            print_6(player,1)
+            print_dit(player,2)
+        elif int(num1)==7:
+            print_7(player,1)
+            print_dit(player,2)
+        elif int(num1)==8:
+            print_8(player,1)
+            print_dit(player,2)
+        elif int(num1)==9:
+            print_9(player,1)
+            print_dit(player,2)
+        elif int(num1)==10:
+            print_1(player,1)
+            print_0(player,2)
+            print_dit(player,3)
+        break
+    while True:
+        num2=getpass.getpass(prompt="", stream=None)
+        if num2=="":
+            continue
+        elif int(num2)==0:
+            if int(num1)<10:
+                print_0(player,3)
+            elif int(num1)>=10:
+                print_0(player,4)
+        elif int(num2)==1:
+            if int(num1)<10:
+                print_1(player,3)
+            elif int(num1)>=10:
+                print_1(player,4)
+        elif int(num2)==2:
+            if int(num1)<10:
+                print_2(player,3)
+            elif int(num1)>=10:
+                print_2(player,4)
+        elif int(num2)==3:
+            if int(num1)<10:
+                print_3(player,3)
+            elif int(num1)>=10:
+                print_3(player,4)
+        elif int(num2)==4:
+            if int(num1)<10:
+                print_4(player,3)
+            elif int(num1)>=10:
+                print_4(player,4)
+        elif int(num2)==5:
+            if int(num1)<10:
+                print_5(player,3)
+            elif int(num1)>=10:
+                print_5(player,4)
+        elif int(num2)==6:
+            if int(num1)<10:
+                print_6(player,3)
+            elif int(num1)>=10:
+                print_6(player,4)
+        elif int(num2)==7:
+            if int(num1)<10:
+                print_7(player,3)
+            elif int(num1)>=10:
+                print_7(player,4)
+        elif int(num2)==8:
+            if int(num1)<10:
+                print_8(player,3)
+            elif int(num1)>=10:
+                print_8(player,4)
+        elif int(num2)==9:
+            if int(num1)<10:
+                print_9(player,3)
+            elif int(num1)>=10:
+                print_9(player,4)
+        elif int(num2)==10:
+            if int(num1)<10:
+                print_1(player,3)
+                print_0(player,4)
+            elif int(num1)>=10:
+                print_1(player,4)
+                print_0(player,5)
+        break
+    return num1,num2
+
+
+def show_input_back(num1,num2,player):
+
+    if int(num1)==0:
+        print_0(player,1)
+        print_dit(player,2)
+    elif int(num1)==1:
         print_1(player,1)
         print_dit(player,2)
     elif int(num1)==2:
@@ -923,12 +1036,13 @@ def show_input(player):
         print_1(player,1)
         print_0(player,2)
         print_dit(player,3)
-    elif int(num1)==11:
-        print_1(player,1)
-        print_1(player,2)
-        print_dit(player,3)
-    num2=getpass.getpass(prompt="", stream=None)
-    if int(num2)==1:
+        
+    if int(num2)==0:
+        if int(num1)<10:
+            print_0(player,3)
+        elif int(num1)>=10:
+            print_0(player,4)    
+    elif int(num2)==1:
         if int(num1)<10:
             print_1(player,3)
         elif int(num1)>=10:
@@ -980,15 +1094,6 @@ def show_input(player):
         elif int(num1)>=10:
             print_1(player,4)
             print_0(player,5)
-    elif int(num2)==11:
-        if int(num1)<10:
-            print_1(player,3)
-            print_1(player,4)
-        elif int(num1)>=10:
-            print_1(player,4)
-            print_1(player,5)
-    
-    return num1,num2
 
 def print_review(): #True=>review  False=>go to replay
     print("\x1bc") #畫面清空
